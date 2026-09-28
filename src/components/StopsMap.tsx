@@ -51,6 +51,7 @@ function StopsMap({ points }: StopsMapProps) {
                     <Popup>
             <div className="stop-popup">
               <strong>{point.title ?? 'Zastávka'}</strong>
+                            {point.note && <p className="stop-note">{point.note}</p>}
               <a className="nav-button" href={getGoogleMapsUrl(point)} target="_blank" rel="noopener noreferrer">
                 Google Maps
               </a>

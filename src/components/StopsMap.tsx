@@ -4,6 +4,8 @@ import L from 'leaflet';
 import type { LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import type { GpsPoint } from '../types/gpsPoint';
+import { getGoogleMapsUrl, getWazeUrl } from '../utils/navigationLinks';
+
 
 type StopsMapProps = {
   points: GpsPoint[];
@@ -46,7 +48,17 @@ function StopsMap({ points }: StopsMapProps) {
       />
       {points.map((point, index) => (
         <Marker key={point.id} position={positions[index]} icon={icons[index]}>
-          <Popup>{point.title ?? 'Zastávka'}</Popup>
+                    <Popup>
+            <div className="stop-popup">
+              <strong>{point.title ?? 'Zastávka'}</strong>
+              <a className="nav-button" href={getGoogleMapsUrl(point)} target="_blank" rel="noopener noreferrer">
+                Google Maps
+              </a>
+              <a className="nav-button nav-button-waze" href={getWazeUrl(point)} target="_blank" rel="noopener noreferrer">
+                Waze
+              </a>
+            </div>
+          </Popup>
         </Marker>
       ))}
     </MapContainer>

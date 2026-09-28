@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import ImportScreen from './components/ImportScreen';
-import StopsMap from './components/StopsMap';
+import RouteView from './components/RouteView';
 import type { ParsedRoute } from './utils/parseRouteText';
 import { loadRoute, saveRoute } from './utils/routeStorage';
 import type { StoredRoute } from './utils/routeStorage';
@@ -25,22 +25,13 @@ function App() {
   }, []);
 
   const handleCancelImport = useCallback(() => setIsImporting(false), []);
+  const handleChangeRoute = useCallback(() => setIsImporting(true), []);
 
   if (!route || isImporting) {
     return <ImportScreen onImport={handleImport} onCancel={route ? handleCancelImport : undefined} />;
   }
 
-  return (
-    <div className="app">
-      <header className="app-header">
-        <span>{route.name}</span>
-        <button className="header-button" type="button" onClick={() => setIsImporting(true)}>
-          Změnit trasu
-        </button>
-      </header>
-      <StopsMap points={route.stops} />
-    </div>
-  );
+  return <RouteView key={route.importedAt} route={route} onChangeRoute={handleChangeRoute} />;
 }
 
 export default App;

@@ -54,4 +54,25 @@ export const clearRoute = () => {
   } catch {
     // Úložiště nemusí být dostupné (např. anonymní režim), mazání pak nemá co dělat
   }
+};const progressKey = (importedAt: string) => `matej.progress.${importedAt}`;
+
+export const loadProgress = (importedAt: string): string[] => {
+  try {
+    const raw = localStorage.getItem(progressKey(importedAt));
+    if (!raw) {
+      return [];
+    }
+    const parsed: unknown = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed.filter((id): id is string => typeof id === 'string') : [];
+  } catch {
+    return [];
+  }
+};
+
+export const saveProgress = (importedAt: string, deliveredIds: string[]) => {
+  try {
+    localStorage.setItem(progressKey(importedAt), JSON.stringify(deliveredIds));
+  } catch {
+    // Bez úložiště postup platí jen do zavření aplikace
+  }
 };

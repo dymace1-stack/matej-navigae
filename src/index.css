@@ -250,4 +250,36 @@ body,
 .leaflet-marker-icon.stop-marker-delivered {
   background: #6b7280;
   opacity: 0.7;
+}.login-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  max-width: 420px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.login-screen h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.login-screen p {
+  margin: 0;
+  color: #bbb;
+}
+
+.text-input {
+  padding: 14px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: #1b1b1b;
+  color: #f5f5f5;
+  font-size: 16px;
+}
+
+.login-screen .login-error {
+  color: #f87171;
 }

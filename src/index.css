@@ -282,4 +282,85 @@ body,
 
 .login-screen .login-error {
   color: #f87171;
+}.picker-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 720px;
+  height: 100dvh;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.picker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.picker-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.picker-header select {
+  flex: 1;
+}
+
+.customer-list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.customer-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #1b1b1b;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.customer-item-selected {
+  border-color: #16a34a;
+  background: #14532d;
+}
+
+.customer-item input {
+  width: 24px;
+  height: 24px;
+  accent-color: #16a34a;
+}
+
+.customer-order {
+  min-width: 28px;
+  color: #bbb;
+  font-weight: 700;
+}
+
+.customer-empty {
+  color: #bbb;
+}
+
+.picker-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.picker-secondary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
 }
